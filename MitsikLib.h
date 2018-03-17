@@ -30,3 +30,9 @@ void Line (double X1, double Y1, double X2, double Y2)
     {
        txLine (GrafX(X1), GrafY(Y1), GrafX(X2), GrafY(Y2));
     }
+
+//-----------------------------------------------------------------------------
+void Circle (double X, double Y, double R)
+    {
+       txCircle (GrafX(X), GrafY(Y), R);
+    }
