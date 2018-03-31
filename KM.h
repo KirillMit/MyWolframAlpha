@@ -16,7 +16,7 @@ void Grafik(double x, double y, char k);
 
 //-----------------------------------------------------------------------------
 
-double GraphSizeX = 15, GraphSizeY = 15;
+double GraphSizeX = 10, GraphSizeY = 10;
 
 //=============================================================================
 
@@ -80,36 +80,28 @@ void sinus(double x, double y)
         }
     }
 
-// FIXME Вообще, это не очень хорошая идея - включать в функции циклы. Циклы при этом дублируются. В данном случае это неизбежно,
-// т.к. ты встроил в sinus() и cosinus() симметричность графиков sin и cos. В общем случае это не будет работать, поэтому
-// лучше за один оборот цикла рисовать одну точку, а не две. Тогда циклы у всех функций будут выглядеть одинаково, и if, выбирающий
-// sin или cos, можно загнать в цикл. В результате рисующая функция будет одна. Примеры ее вызовов:
-//     DrawGraphic (FUNC_SIN);
-//     DrawGraphic (FUNC_COS);
-
 //-----------------------------------------------------------------------------
 
-void Grafik(double x, double y, char k)
+void Grafik(double x_min, double x_max, char k)
     {
-        if (k == 115) // FIXME Лучше 's' (это то же самое)
-        {
-            while(x < txGetExtentX() / 2)
-            {
-                y = sin(x);
-                Circle (x, y, 2);
-                Circle (-x, -y, 2);
-                x = x + 0.001;
-            }
-        }
 
-        else if (k == 99) // FIXME Еще лучше == FUNC_COS, где FUNC_COS - константа const int FUNC_COS = 'c' (объяви это сверху)
-        {
-            while(x < txGetExtentX() / 2)
+            double x = x_min;
+
+            while(x < x_max)
             {
-                y = cos(x);
+                double y = 0;
+
+                if (k == 's')
+                {
+                    y = sin(x);
+                }
+                else if (k == 'c')
+                {
+                    y = cos(x);
+                }
+
                 Circle (x, y, 2);
-                Circle (-x, y, 2);
+
                 x = x + 0.001;
             }
-        }
     }
