@@ -16,7 +16,7 @@ void Grafik(double x, double y, char k);
 
 //-----------------------------------------------------------------------------
 
-double GraphSizeX = 10, GraphSizeY = 10;
+double GraphSizeX = 15, GraphSizeY = 15;
 
 //=============================================================================
 
@@ -82,7 +82,7 @@ void sinus(double x, double y)
 
 //-----------------------------------------------------------------------------
 
-void Grafik(double x_min, double x_max, char k)
+/*void Grafik_meow (double x_min, double x_max, char k)
     {
 
             double x = x_min;
@@ -99,9 +99,42 @@ void Grafik(double x_min, double x_max, char k)
                 {
                     y = cos(x);
                 }
+                else if (k == 'L')
+                {
+                    y = log(x);
+                }
+                else if (k == 't')
+                {
+                    y = tan(x);
+                }
+                else if (k == 'S')
+                {
+                    y = sqrt(x);
+                }
 
                 Circle (x, y, 2);
 
-                x = x + 0.001;
+                x = x + 0.0001;
             }
     }
+    */
+
+
+//-----------------------------------------------------------------------------
+
+void Grafik (double x_min, double x_max,  double (*func) (double x) )
+    {
+
+            double x = x_min;
+
+            while(x < x_max)
+            {
+                double y = func (x);
+
+                Circle (x, y, 2);
+
+                x = x + 0.0001;
+            }
+    }
+
+
